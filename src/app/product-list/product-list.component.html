@@ -1,0 +1,58 @@
+<br/>
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-md-6">
+                   <form class="form-inline">
+                       <div class="form-group">
+                          <label class="control-label"> Search By</label>
+                          <select class="form-control" [(ngModel)] = "searchSelectedValue" [ngModelOptions]="{standalone: true}">
+                              <option *ngFor = 'let value of searchDropDownValues' [value] = 'value'>{{value}}</option>
+                          </select>
+                       </div>  
+                       <div class="form-group">
+                            <input class="form-control" type="text" [(ngModel)] ="filterByValue" [ngModelOptions]="{standalone: true}">
+                         </div> 
+                    </form>
+                </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                        <div class="panel-heading"> 
+                             <h4>{{title}}</h4>          
+                        </div>
+                    
+                        <div class="panel-body">
+                           <table class="table">
+                               <thead>
+                                  <th><button class="btn btn-primary" (click)=toggleImg()>{{showImg?'HideImage':'Show Image'}}</button> </th>
+                                   <th>Name</th>
+                                   <th>Description</th>
+                                   <!-- <th>Code</th> -->
+                                   <th>Cost</th> 
+                                   <th>Price</th>
+                                   <th>Release Date</th>
+                                   <th>Rating</th>
+                               </thead>
+                               <tbody>
+                                   <tr *ngFor="let product of products|FilterItems:searchSelectedValue:filterByValue">
+                                       <td><img *ngIf='showImg' [src] = product.ImgUrl
+                                        [style.width.px] = 100 [style.height.px] = 50/></td>
+                                       <td><a [routerLink] = "['/Product', product.Id]">{{product.Name}}</a></td>
+                                       <td>{{product.Description}}</td>
+                                       <!-- <td>{{product.Code|lowercase|ConvertToSpace:'-'}}</td> -->
+                                       <td>{{product.Cost | currency}}</td>
+                                       <td>{{product.Price | currency}}</td>
+                                       <td>{{product.ReleaseDate}}</td>
+                                       <td><app-star [rating]='product.Rating'></app-star></td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                        </div>
+                    
+                    </div>
+        </div>
+    </div>
+</div>
+

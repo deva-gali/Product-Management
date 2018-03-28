@@ -1,0 +1,65 @@
+<div class="panel panel-primary" style="text-align:left">
+        <div class="panel-heading">
+            {{title}} : {{product.Name}}
+        </div>
+    
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-3"> Name</div>
+                        <div class="col-md-6">{{product.Name}}</div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-3"> Code</div>
+                        <div class="col-md-6">{{product.Code}}</div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-md-3"> Available</div>
+                        <div class="col-md-6">{{product.ReleaseDate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"> Description</div>
+                        <div class="col-md-6">{{product.Description}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"> Cost</div>
+                        <div class="col-md-6">{{product.Cost | currency}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"> Price</div>
+                        <div class="col-md-6">{{product.Price | currency}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"> Rating</div>
+                        <!-- <div class="col-md-6">{{product.Rating}}</div> -->
+                        <div class="col-md-6"><app-star [rating] = 'product.Rating' ></app-star></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"> Category</div>
+                        <div class="col-md-6">{{product.Category}}</div>
+                    </div>
+    
+                </div>
+    
+    
+                <div class="col-md-6">
+    
+                    <img [src] = 'product.ImgUrl' style="width:280px;height:150px" class="img-responsive"  />
+    
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="panel-footer">
+            <a class="btn btn-default" [routerLink]="['/Products']">
+                Back
+            </a>
+           
+            <a class="btn btn-primary">
+                Edit
+            </a>
+        </div>
+    
+    </div>
